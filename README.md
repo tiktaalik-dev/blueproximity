@@ -9,7 +9,7 @@ most likely your mobile phone, and keeping track of its distance.
 [![Download from][github-downloads-image]][github-downloads-url]
 
 >## Note from the maintainer of this fork ##
->This current version (1.2.6) only upgraded the original code to make it run in Python 3 / GTK+ 3.
+>This current version (1.3.0) only upgraded the original code to make it run in Python 3 / GTK+ 3.
 I have respected the original work from Lars Friedrichs as much as possible.
 In the future, if there's interest on this software I might continue developing it under a new name. Just let me know :-)
 > - Rodrigo Gambra-Middleton (rodrigo@tiktaalik.dev)
