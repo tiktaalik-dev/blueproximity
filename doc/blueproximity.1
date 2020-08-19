@@ -1,0 +1,42 @@
+.\" Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.\" Please adjust this date whenever revising the manpage.
+.\" 
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.TH "BLUEPROXIMITY" "1" "February 06, 2008" "Lars Friedrichs" ""
+.SH "NAME" 
+blueproximity \- locks/unlocks your desktop tracking a bluetooth device
+.SH "SYNOPSIS"
+.B blueproximity
+.SH "DESCRIPTION"
+.B blueproximity
+helps you adding a little more security to your desktop.
+It does so by detecting one of your bluetooth devices, most likely your mobile phone, and keeping track of its distance. If you move away from your computer and the distance is above a certain level (no measurementin meters is possible) for a given time, it automatically locks your desktop (or starts any other shell command you want).
+Once away, if you return nearer than a given level for a set time your computer unlocks magically without any interaction (or starts any other shell command you want).
+.PP
+Have a look at the package documentation in your distribution's doc directory, likely /usr/share/doc/blueproximity, to read the complete html manual or visit the website http://blueproximity.sourceforge.net .
+.SH "OPTIONS"
+.B blueproximity
+doesn't support any command\-line parameter.
+.SH "FILES"
+.I ~/.blueproximityrc
+.BR
+The config file containing the user's settings.
+.SH "SEE ALSO"
+.BR xscreensaver (1).
+.SH "AUTHOR"
+blueproximity was written by Lars Friedrichs <larsfriedrichs@gmx.de>.
+.PP 
+This manual page was written by Francesco Namuri <francesco@namuri.it>
+and Lars Friedrichs for the Debian project and Ubuntu (but may be used by others).

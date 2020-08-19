@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Name[de_DE]=BlueProximity
+Exec=/usr/bin/blueproximity
+Icon[de_DE]=/usr/share/pixmaps/blueproximity.xpm
+Name=BlueProximity
+Icon=/usr/share/pixmaps/blueproximity.xpm
+Categories=Application;Utility;
+StartupNotify=false
