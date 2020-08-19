@@ -83,7 +83,6 @@ Distributed under the GPL v.2 license. See ``COPYING`` for more information.
                      how close it's another Bluetooth device (e.g. your mobile phone).
     
      Copyright (C) 2007 Lars Friedrichs <larsfriedrichs@gmx.de>
-                        Address your enquiries to: info@tiktaalik.dev
 
      This program is free software: you can redistribute it and/or modify
      it under the terms of the GNU General Public License as published by
