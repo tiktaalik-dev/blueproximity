@@ -1,5 +1,6 @@
 Change log for BlueProximity
 
+1.3.2 Fixed mistake in README.md file
 1.3.1 Almost everything back to normal!
 - fixed: Now it correctly updates the system tray icon according to the proximity/paused/gone/back state
 - fixed: Now it correctly differentiates what mouse button was clicked, and then either shows/hides the main

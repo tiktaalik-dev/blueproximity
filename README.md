@@ -60,18 +60,9 @@ proximity.py script.
 
 ## Release History
 
+* 1.3.2 Fixed README.md (this file) mistake
 * 1.3.1 Bug fix
 * 1.3.0 Updated application so it now runs in Python 3 and GTK+ 3
-* 0.9.5 Updated README file
-* 0.9.4 Bug fix
-* 0.9.3 Bug fix
-* 0.9.2 Bug fix
-* 0.9.1 Bug fix
-* 0.9.0
-    * The first proper release
-    * Bot features Telegram messenger and Twitter platform functionality
-    * Code is completely documented
-    * Work in progress: implementing unit testing in version 1.0
 
 ## About the maintainer of this fork
 
