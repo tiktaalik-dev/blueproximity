@@ -46,9 +46,9 @@ import struct
 # Get the local directory since we are not installing anything
 if dist_path == './':
     dist_path = os.getcwd() + '/'
-local_path = dist_path + 'LANG/'
 
 # Init the list of languages to support
+local_path = dist_path + 'LANG/'
 langs = []
 
 # Check the default locale
@@ -196,7 +196,7 @@ icon_att = 'blueproximity_attention.svg'
 # The icon used if no proximity is detected.
 icon_away = 'blueproximity_nocon.svg'
 # The icon used during connection processes and with connection errors.
-icon_con = 'blueproximity_error.svg'
+icon_error = 'blueproximity_error.svg'
 # The icon shown if we are in pause mode.
 icon_pause = 'blueproximity_pause.svg'
 
@@ -320,14 +320,14 @@ class ProximityGUI(object):
         # Prepare icon
         self.icon = XApp.StatusIcon()
         self.icon.set_tooltip_text(_("BlueProximity starting..."))
-        self.icon.set_icon_name(dist_path + icon_con)
+        self.icon.set_icon_name(dist_path + icon_error)
 
-        self.icon.connect('activate', self.showWindow)
+        # self.icon.connect('activate', self.showWindow)
         # self.icon.connect('popup-menu', self.popupMenu, self.popupmenu)
         self.icon.connect('button-release-event', self.make_popupmenu)
         # self.icon.popup_menu(self.popupmenu, 0, 0, 0, 0, 0)
 
-        # self.icon.set_visible(True)
+        self.icon.set_visible(True)
 
         # now the control may fire change events
         self.gone_live = True
@@ -336,25 +336,31 @@ class ProximityGUI(object):
             config[2].logger.log_line(_('started.'))
 
         # Setup the popup menu and associated callbacks
-    def make_popupmenu(self, first, second, third, forth, button, time):
-        self.popupmenu = gtk.Menu()
-        menuItem = gtk.ImageMenuItem.new_from_stock(stock_id=gtk.STOCK_PREFERENCES)
-        menuItem.connect('activate', self.showWindow)
-        self.popupmenu.append(menuItem)
-        menuItem = gtk.ImageMenuItem.new_from_stock(stock_id=gtk.STOCK_MEDIA_PAUSE)
-        menuItem.connect('activate', self.pausePressed)
-        self.popupmenu.append(menuItem)
-        menuItem = gtk.ImageMenuItem.new_from_stock(stock_id=gtk.STOCK_ABOUT)
-        menuItem.connect('activate', self.aboutPressed)
-        self.popupmenu.append(menuItem)
-        # menuItem = gtk.MenuItem()
-        menuItem = gtk.SeparatorMenuItem()
-        self.popupmenu.append(menuItem)
-        menuItem = gtk.ImageMenuItem.new_from_stock(stock_id=gtk.STOCK_QUIT)
-        menuItem.connect('activate', self.quit)
-        self.popupmenu.append(menuItem)
-        self.popupmenu.show_all()
-        self.popupmenu.popup(None, None, None, None, button, time)
+    def make_popupmenu(self, first, second, third, button, event_time, unknown):
+        if button == 1:
+            self.showWindow(self.icon)
+        if button == 3:
+            self.popupmenu = gtk.Menu()
+            menuItem = gtk.ImageMenuItem.new_from_stock(stock_id=gtk.STOCK_PREFERENCES)
+            menuItem.connect('activate', self.showWindow)
+            self.popupmenu.append(menuItem)
+            menuItem = gtk.ImageMenuItem.new_from_stock(stock_id=gtk.STOCK_MEDIA_PAUSE)
+            menuItem.connect('activate', self.pausePressed)
+            self.popupmenu.append(menuItem)
+            menuItem = gtk.ImageMenuItem.new_from_stock(stock_id=gtk.STOCK_ABOUT)
+            menuItem.connect('activate', self.aboutPressed)
+            self.popupmenu.append(menuItem)
+            # menuItem = gtk.MenuItem()
+            menuItem = gtk.SeparatorMenuItem()
+            self.popupmenu.append(menuItem)
+            menuItem = gtk.ImageMenuItem.new_from_stock(stock_id=gtk.STOCK_QUIT)
+            menuItem.connect('activate', self.quit)
+            self.popupmenu.append(menuItem)
+            # params = "params are:\nfirst:{0}\nsecond:{1}\nthird:{2}\nbutton:{3}\nevent_time:{4}\nunknown:{5}"
+            # params = params.format(first, second, third, button, event_time, unknown)
+            # print(repr(params))
+            self.popupmenu.show_all()
+            self.popupmenu.popup(None, None, None, 3, button, event_time)
 
     # Callback to just close and not destroy the rename config window
     def dlgRenameCancel_clicked(self, widget, data=None):
@@ -589,15 +595,18 @@ class ProximityGUI(object):
         self.windowRename.show()
 
     # Callback to show the pop-up menu if icon is right-clicked.
-    def popupMenu(self, widget, button, time, data=None):
+    def popupMenu(self, widget, button, event_time, data=None):
         if button == 3:
             if data:
                 data.show_all()
-                data.popup(None, None, None, 3, button, time)
+                data.popup(None, None, None, 3, button, event_time)
         pass
 
     # Callback to show and hide the config dialog.
-    def showWindow(self, widget, data=None):
+    def showWindow(self, widget, data=None, event_time=None):
+        # params = "params are:\nself:{0}\nwidget:{1}\ndata:{2}\nevent_time:{3}"
+        # params = params.format(self, widget, data, event_time)
+        # print(repr(params))
         if self.window.get_property("visible"):
             self.Close()
         else:
@@ -613,7 +622,8 @@ class ProximityGUI(object):
         people = [
             u"Lars Friedrichs <LarsFriedrichs@gmx.de>",
             u"Tobias Jakobs",
-            u"Zsolt Mazolt"]
+            u"Zsolt Mazolt",
+            u"Rodrigo Gambra-Middleton (current fork maintainer) <rodrigo@tiktaalik.dev>"]
         translators = """Translators:
                            de Lars Friedrichs <LarsFriedrichs@gmx.de>
                            en Lars Friedrichs <LarsFriedrichs@gmx.de>
@@ -672,7 +682,7 @@ class ProximityGUI(object):
                 config[2].Simulate = False
 
             from gi.repository import GdkPixbuf
-            GdkPixbuf.Pixbuf.new_from_file(dist_path + icon_con)
+            GdkPixbuf.Pixbuf.new_from_file(dist_path + icon_error)
         else:
             self.pauseMode = True
             for config in configs:
@@ -783,13 +793,16 @@ class ProximityGUI(object):
         # Put selected channel in channel entry field
         selection = self.wTree.get_object("treeScanChannelResult").get_selection()
         (model, tree_iter) = selection.get_selected()
-        value = model.get_value(tree_iter, 0)
-        self.wTree.get_object("entryChannel").set_value(int(value))
-        entry_channel_value = self.wTree.get_object("entryChannel").get_value()
-        print('tree_iter is: {0}\n\n'
-              'Also, repr(tree_iter) is: {1}\n\n'
-              'And entryChannel value is: {2}\n\n'.format(tree_iter, repr(tree_iter), entry_channel_value))
-        self.writeSettings()
+        # print("selection.getselected() is: {}".format(repr(selection.get_selected())))
+        # print("tree_iter is: {}".format(repr(tree_iter)))
+        if tree_iter is not None:
+            value = model.get_value(tree_iter, 0)
+            self.wTree.get_object("entryChannel").set_value(int(value))
+            entry_channel_value = self.wTree.get_object("entryChannel").get_value()
+            print('tree_iter is: {0}\n\n'
+                  'Also, repr(tree_iter) is: {1}\n\n'
+                  'And entryChannel value is: {2}\n\n'.format(tree_iter, repr(tree_iter), entry_channel_value))
+            self.writeSettings()
 
     # Callback to just close and not destroy the main window
     def btnClose_clicked(self, widget, data=None):
@@ -928,26 +941,27 @@ class ProximityGUI(object):
         # Update icon too
         if self.pauseMode:
             from gi.repository import GdkPixbuf
-            GdkPixbuf.Pixbuf.new_from_file(dist_path + icon_pause)
-            # self.icon.set_tooltip(_('Pause Mode - not connected'))
+            # GdkPixbuf.Pixbuf.new_from_file(dist_path + icon_pause)
+            self.icon.set_icon_name(dist_path + icon_pause)
+            self.icon.set_tooltip_text(_('Pause Mode - not connected'))
         else:
 
             # we have to show the 'worst case' since we only have one icon but many configs...
             connection_state = 0
             con_info = ''
-            con_icons = [icon_base, icon_att, icon_away, icon_con]
+            con_icons = [icon_base, icon_att, icon_away, icon_error]
             for config in configs:
                 if config[2].ErrorMsg == "No connection found, trying to establish one...":
                     connection_state = 3
                 else:
                     if config[2].State != _('active'):
-                        if (connection_state < 2):
+                        if connection_state < 2:
                             connection_state = 2
                     else:
                         if newVal < config[2].active_limit:
-                            if (connection_state < 1):
+                            if connection_state < 1:
                                 connection_state = 1
-                if (con_info != ''):
+                if con_info != '':
                     con_info = con_info + '\n\n'
                 con_info = con_info + config[0] + ': ' + _('Detected Distance: ') + str(-config[2].Dist) + '; ' + _(
                     "Current State: ") + config[2].State + '; ' + _("Status: ") + config[2].ErrorMsg
@@ -955,8 +969,9 @@ class ProximityGUI(object):
                 simu = _('\nSimulation Mode (locking disabled)')
             else:
                 simu = ''
-            # self.icon.set_from_file(dist_path + con_icons[connection_state])
-            # self.icon.set_tooltip(con_info + '\n' + simu)
+            self.icon.set_icon_name(dist_path + con_icons[connection_state])
+            self.icon.set_tooltip_text(con_info + '\n' + simu)
+        # print("self.proxi.Simulate is: {}".format(self.proxi.Simulate))
         from gi.repository import GLib as glib
         self.timer = glib.timeout_add(1000, self.updateState)
 
@@ -1262,7 +1277,7 @@ class Proximity(threading.Thread):
             self.ignoreFirstTransition = False
         else:
             self.logger.log_line(_('screen is unlocked'))
-            if (self.timeAct == 0):
+            if self.timeAct == 0:
                 self.timeAct = time.time()
                 ret_val = os.popen(self.config['unlock_command']).readlines()
                 self.timeAct = 0
