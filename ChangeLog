@@ -1,5 +1,11 @@
 Change log for BlueProximity
 
+1.3.1 Almost everything back to normal!
+- fixed: Now it correctly updates the system tray icon according to the proximity/paused/gone/back state
+- fixed: Now it correctly differentiates what mouse button was clicked, and then either shows/hides the main
+         window or display the contextual menu
+- fixed: Now it won't show an exception error message on startup. Though it was harmless, it was annoying all the same!
+
 1.3.0 Upgrade to Python 3 (tested on version 3.8) and GTK3
 - info: This is a fork from the original codebase! And this update is intended solely for the purpose
         of bringing back this application so that it can run again after Python 2.7 reached End Of Life stage.

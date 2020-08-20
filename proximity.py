@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-SW_VERSION = '1.3.0'
+SW_VERSION = '1.3.1'
 
 # Add security to your desktop by automatically locking and unlocking 
 # the screen when you and your phone leave/enter the desk. 
