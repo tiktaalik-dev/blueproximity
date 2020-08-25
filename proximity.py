@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-SW_VERSION = '1.3.2'
+SW_VERSION = '1.3.3'
 
 # Add security to your desktop by automatically locking and unlocking 
 # the screen when you and your phone leave/enter the desk. 
@@ -1047,7 +1047,7 @@ class Logger(object):
                 self.flog = open(filename, 'w')
                 self.filelogging = True
             except:
-                print(_("Could not open logfile '%s' for writing." % filename))
+                print(_("Could not open logfile '{}' for writing.").format(filename))
                 self.disable_filelogging
 
     # Deactivates logging to a file.

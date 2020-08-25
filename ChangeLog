@@ -1,5 +1,9 @@
 Change log for BlueProximity
 
+1.3.3 Bug fixes
+- fixed: Old string format that would stop tat message from being added to the translation template
+- fixed: Typo in installation instructions in README.md file and also added instruction to activate virtual environment
+- fixed: Wrong package names in requirements.txt file
 1.3.2 Fixed mistake in README.md file
 1.3.1 Almost everything back to normal!
 - fixed: Now it correctly updates the system tray icon according to the proximity/paused/gone/back state

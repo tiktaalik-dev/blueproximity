@@ -9,7 +9,7 @@ most likely your mobile phone, and keeping track of its distance.
 [![Download from][github-downloads-image]][github-downloads-url]
 
 >## Note from the maintainer of this fork ##
->This current version (1.3.1) only upgraded the original code to make it run in Python 3 / GTK+ 3.
+>This current version (1.3.3) only upgraded the original code to make it run in Python 3 / GTK+ 3.
 I have respected the original work from Lars Friedrichs as much as possible.
 In the future, if there's interest on this software I might continue developing it under a new name. Just let me know :-)
 > - Rodrigo Gambra-Middleton (rodrigo@tiktaalik.dev)
@@ -61,6 +61,7 @@ proximity.py script.
 
 ## Release History
 
+* 1.3.3 Bug fixes
 * 1.3.2 Fixed README.md (this file) mistake
 * 1.3.1 Bug fix
 * 1.3.0 Updated application so it now runs in Python 3 and GTK+ 3

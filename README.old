@@ -29,6 +29,7 @@ Here's a list on contributors to the source:
  - Tobias Jakobs (GUI optimizations)
  - Zsolt Mazolt (GUI and KDE stuff)
  - Rodrigo Gambra-Middleton (Upgrade to run in Python3 and GTK3)
+ - Stuart Langridge (Bugfix for XApp error message)
 
 Interesting commands:
  * Un-/Locking gnome-screenserver
