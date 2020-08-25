@@ -90,14 +90,22 @@ try:
     import gi
 
     gi.require_version('Gtk', '3.0')
-    gi.require_version('XApp', '1.0')
     from gi.repository import GObject as gobject
-    from gi.repository import XApp
 except:
     print(_("The program cannot import the module gobject."))
     print(_("Please make sure the GObject bindings for python are installed."))
     print(_("e.g. with Ubuntu Linux, type"))
     print(_(" sudo apt-get install python3-gobject"))
+    sys.exit(1)
+
+try:
+    gi.require_version('XApp', '1.0')
+    from gi.repository import XApp
+except:
+    print(_("The program cannot import the module XApp."))
+    print(_("Please make sure the GI bindings for XApp are installed."))
+    print(_("e.g. with Ubuntu Linux, type"))
+    print(_(" sudo apt-get install gir1.2-xapp-1.0"))
     sys.exit(1)
 
 try:
