@@ -47,7 +47,8 @@ required libraries using the requirements.txt file.
 ```sh
 cd my-blueproximity-project/
 virtualenv --python=python3.8 venvs/venv3.8
-pip install -t requirements.txt
+source venvs/venv-3.8/bin/activate
+pip3 install -r requirements.txt
 ```
 
 ## Configuration
