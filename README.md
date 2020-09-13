@@ -39,6 +39,12 @@ Note from the maintainer of this fork (RGM):
 >For the moment, this application hasn't been packaged for installation as a .deb or .rpm.
 If you know how to do it, please reach out and I'll include such packages!
 
+### Arch Linux Package (maintained by: [Laurent OF Fough](https://github.com/LaurentFough))
++ AUR Package available here: [AUR/ blueproximity-py3-git](https://aur.archlinux.org/packages/blueproximity-py3-git/)
+
+#### Installation via yay|trizen, etc: (_* Package is marked as conflicting with the Python2 version, to avoid having both installed_)
+- > `$ yay -S blueproximity-py3-git`
+
 ## Development setup
 
 Create a virtual environment for Python 3.8 and install the 
