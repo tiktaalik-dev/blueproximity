@@ -45,7 +45,7 @@ import struct
 
 # Get the local directory since we are not installing anything
 if dist_path == './':
-    dist_path = os.getcwd() + '/'
+    dist_path = os.path.dirname(os.path.abspath(__file__)) + '/'
 
 # Init the list of languages to support
 local_path = dist_path + 'LANG/'
@@ -95,7 +95,7 @@ except:
     print(_("The program cannot import the module gobject."))
     print(_("Please make sure the GObject bindings for python are installed."))
     print(_("e.g. with Ubuntu Linux, type"))
-    print(_(" sudo apt-get install python3-gobject"))
+    print(_(" sudo apt-get install python3-gi"))
     sys.exit(1)
 
 try:

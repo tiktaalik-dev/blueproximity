@@ -1,4 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
+## AppImage Builder temporary files and artifacts
+AppDir/
+appimage-builder-cache/
+BlueProximity-*-*.AppImage*
 ## Old files
 proximity3.old.glade
 proximity.glade
