@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
 
 SW_VERSION = '1.3.3'
@@ -26,7 +26,7 @@ APP_NAME = "blueproximity"
 # This value gives us the base directory for language files and icons.
 # Set this value to './' for local folder version
 # or, for instance, to '/usr/share/blueproximity/' for packaged version
-dist_path = './'
+dist_path = '/usr/share/blueproximity/'
 
 # Translation stuff
 import gettext
@@ -52,7 +52,7 @@ local_path = dist_path + 'LANG/'
 langs = []
 
 # Check the default locale
-lc, encoding = locale.getdefaultlocale()
+lc, encoding = locale.getlocale()
 
 if lc:
     # If we have a default, it's the first in the list
@@ -827,7 +827,7 @@ class ProximityGUI(object):
         model, selection_iter = selection.get_selected()
         if (selection_iter):
             mac = self.model.get_value(selection_iter, 0)
-            self.wTree.get_widget("entryMAC").set_text(mac)
+            self.wTree.get_object("entryMAC").set_text(mac)
             self.writeSettings()
 
     # Callback that is executed when the scan for devices button is clicked
@@ -1369,7 +1369,7 @@ class Proximity(threading.Thread):
                         duration_count = 0
                         proxiCmdCounter = proxiCmdCounter + 1
                 if dist != self.Dist or state != self.State:
-                    # print "Detected distance atm: " + str(dist) + "; state is " + state
+                    print("Detected distance atm: " + str(dist) + "; state is " + state)
                     pass
                 self.State = state
                 self.Dist = dist
