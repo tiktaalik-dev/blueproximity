@@ -7,9 +7,9 @@ Version:        1.4.0
 Release:        1%{?dist}
 Summary:        This software helps you add a little more security to your desktop. It does so by detecting one of your bluetooth devices, most likely your mobile phone, and keeping track of its distance.
 License:        GPLv2
-Source0:	https://github.com/jboero/blueproximity/archive/refs/tags/v%{version}.tar.gz
-BuildRequires:  coreutils
-Requires:	bluez-deprecated python3-bluez python3-configobj python3-xapp
+Source0:	    https://github.com/jboero/blueproximity/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  coreutils desktop-file-utils
+Requires:	    desktop-file-utils bluez-deprecated python3-bluez python3-configobj python3-xapp
 URL:            https://github.com/tiktaalik-dev/blueproximity
 
 %define debug_package %{nil}
