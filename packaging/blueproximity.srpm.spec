@@ -26,7 +26,7 @@ See the doc/ directory or the website which both contain a manual with screensho
 
 Note beware Bluetooth MAC spoofing. This will only work with paired devices for security. Does not support BTLE.
 %prep
-%autosetup -n blueproximity-packaging
+%autosetup
 
 %build
 
