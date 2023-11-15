@@ -40,8 +40,8 @@ cp addons/blueproximity.xpm %{buildroot}%{_datadir}/pixmaps/
 desktop-file-install addons/blueproximity.desktop
 
 %clean
-rm -rf %{buildroot}
-rm -rf %{_builddir}/*
+rm -rf %{buildroot} || echo Skipping removal
+rm -rf %{_builddir}/* || echo Skipping removal
 
 %files
 %{_bindir}/%{name}
