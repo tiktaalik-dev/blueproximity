@@ -9,7 +9,7 @@ Summary:        This software helps you add a little more security to your deskt
 License:        GPLv2
 Source0:	https://github.com/jboero/blueproximity/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  coreutils
-Requires:	bluez-deprecated python3-bluez
+Requires:	bluez-deprecated python3-bluez python3-configobj python3-xapp
 URL:            https://github.com/tiktaalik-dev/blueproximity
 
 %define debug_package %{nil}
