@@ -3,8 +3,8 @@
 
 SW_VERSION = '1.3.3'
 
-# Add security to your desktop by automatically locking and unlocking 
-# the screen when you and your phone leave/enter the desk. 
+# Add security to your desktop by automatically locking and unlocking
+# the screen when you and your phone leave/enter the desk.
 # Think of a proximity detector for your mobile phone via bluetooth.
 # requires external bluetooth util hcitool to run
 # (which makes it unix only at this time)
@@ -377,7 +377,7 @@ class ProximityGUI(object):
 
     # Callback to rename a config file.
     def dlgRenameDo_clicked(self, widget, data=None):
-        newconfig = self.wTree.get_widget("entryRenameName").get_text()
+        newconfig = self.wTree.get_object("entryRenameName").get_text()
         # check if something has been entered
         if newconfig == '':
             dlg = gtk.MessageDialog(None, gtk.DIALOG_MODAL, gtk.MESSAGE_ERROR, gtk.BUTTONS_OK,
@@ -431,7 +431,7 @@ class ProximityGUI(object):
 
     # Callback to create a config file.
     def dlgNewDo_clicked(self, widget, data=None):
-        newconfig = self.wTree.get_widget("entryNewName").get_text()
+        newconfig = self.wTree.get_object("entryNewName").get_text()
 
         # check if something has been entered
         if (newconfig == ''):
@@ -649,21 +649,21 @@ class ProximityGUI(object):
                            sv Daniel Nylander <dnylander@users.sourceforge.net>
                                     """
         blueproximity_license = _("""
-        BlueProximity is free software; you can redistribute it and/or modify it 
-        under the terms of the GNU General Public License as published by the 
-        Free Software Foundation; either version 2 of the License, or 
+        BlueProximity is free software; you can redistribute it and/or modify it
+        under the terms of the GNU General Public License as published by the
+        Free Software Foundation; either version 2 of the License, or
         (at your option) any later version.
 
-        BlueProximity is distributed in the hope that it will be useful, but 
-        WITHOUT ANY WARRANTY; without even the implied warranty of 
-        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+        BlueProximity is distributed in the hope that it will be useful, but
+        WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
         See the GNU General Public License for more details.
 
-        You should have received a copy of the GNU General Public License 
-        along with BlueProximity; if not, write to the 
+        You should have received a copy of the GNU General Public License
+        along with BlueProximity; if not, write to the
 
-        Free Software Foundation, Inc., 
-        59 Temple Place, Suite 330, 
+        Free Software Foundation, Inc.,
+        59 Temple Place, Suite 330,
         Boston, MA  02111-1307  USA
         """)
         about = gtk.AboutDialog()
@@ -702,7 +702,7 @@ class ProximityGUI(object):
     # Helper function to set a ComboBox's value to value if that exists in the Combo's list
     # The value is not changed if the new value is not member of the list.
     # @param widget a gtkComboBox object
-    # @param value the value the gtkComboBox should be set to.    
+    # @param value the value the gtkComboBox should be set to.
     def setComboValue(self, widget, value):
         model = widget.get_model()
         for row in model:
@@ -785,7 +785,7 @@ class ProximityGUI(object):
     # Callback called by certain GUI elements if their values are changed.
     # We don't react if we are still initializing (self.gone_live==False)
     # because setting the values of the elements would already fire their change events.
-    # But in any case we kill a possibly existing connection. 
+    # But in any case we kill a possibly existing connection.
     # Changing the rfcomm channel e.g. fires this event instead of event_settings_changed.
     # @see event_settings_changed
     def event_settings_changed_reconnect(self, widget, data=None):
@@ -827,7 +827,7 @@ class ProximityGUI(object):
         model, selection_iter = selection.get_selected()
         if (selection_iter):
             mac = self.model.get_value(selection_iter, 0)
-            self.wTree.get_widget("entryMAC").set_text(mac)
+            self.wTree.get_object("entryMAC").set_text(mac)
             self.writeSettings()
 
     # Callback that is executed when the scan for devices button is clicked
@@ -1032,7 +1032,7 @@ class Logger(object):
     # Activates the logging to the given file.
     # Actually tries to append to that file first, afterwards tries to write to it.
     # If both don't work it gives an error message on stdout and does not activate the logging.
-    # @param filename The complete filename where to log to        
+    # @param filename The complete filename where to log to
     def enable_filelogging(self, filename):
         self.filename = filename
         try:
@@ -1096,7 +1096,7 @@ class ScanDevice(object):
     # @param device_mac MAC address of the bluetooth device to be scanned.
     # @param was_paused A parameter to be passed to the finishing callback function.
     # This is to automatically put the GUI in simulation mode if it has been before scanning. (dirty hack)
-    # @param callback A callback function to be called after scanning has been done. 
+    # @param callback A callback function to be called after scanning has been done.
     # It takes one parameter which is preset by the was_paused parameter.
     def __init__(self, device_mac, model, was_paused, callback):
         self.mac = device_mac
